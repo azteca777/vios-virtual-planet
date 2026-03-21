@@ -5,12 +5,32 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Definimos la lista de marcas en México.
-// Cada una ya tiene preparado el espacio 'url' para cuando quieras agregar sus enlaces.
 const marcasMexico = [
-  { id: 'conquesito', name: 'Empanadas con Quesito', logo: '/logo_conquesito.jpeg', url: '#' },
-  { id: 'ketzzal', name: 'Salsas Ketzzal', logo: '/salsas_ketzzal.jpeg', url: '#' },
-  { id: 'mulata', name: 'Mulata', logo: '/mulata_bw.jpeg', url: '#' },
-  { id: 'magnolia', name: 'Magnolia', logo: '/magnolia.jpeg', url: '#' },
+  { 
+    id: 'conquesito', 
+    name: 'Empanadas con Quesito', 
+    logo: '/logo_conquesito.jpeg', 
+    // 👇 AQUÍ ESTÁ EL ENLACE PROFUNDO AL METAVERSO
+    url: 'https://tianguistulum.com/?local=conquesito' 
+  },
+  { 
+    id: 'ketzzal', 
+    name: 'Salsas Ketzzal', 
+    logo: '/salsas_ketzzal.jpeg', 
+    url: '#' 
+  },
+  { 
+    id: 'mulata', 
+    name: 'Mulata', 
+    logo: '/mulata_bw.jpeg', 
+    url: '#' 
+  },
+  { 
+    id: 'magnolia', 
+    name: 'Magnolia', 
+    logo: '/magnolia.jpeg', 
+    url: '#' 
+  },
 ];
 
 export default function ViosVirtualPlanetRoot() {
@@ -98,7 +118,6 @@ export default function ViosVirtualPlanetRoot() {
         </div>
 
         {/* --- GRID DE MARCAS --- */}
-        {/* Usamos un grid que se adapta: 2 columnas en móviles, 4 en pantallas grandes */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 w-full max-w-6xl">
           {marcasMexico.map((marca) => (
             <div key={marca.id} className="relative group">
@@ -110,9 +129,6 @@ export default function ViosVirtualPlanetRoot() {
                             hover:border-[#d4af37] hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.3)] transition-all duration-300 transform group-hover:-translate-y-2"
                 aria-label={idioma === 'es' ? `Visitar perfil de ${marca.name}` : `Visit ${marca.name} profile`}
               >
-                {/* Usamos 'object-contain' en lugar de 'cover' para que los logos completos quepan 
-                  sin recortarse, independientemente de sus proporciones originales.
-                */}
                 <div className="relative w-full h-full">
                   <Image 
                     src={marca.logo} 
@@ -128,7 +144,7 @@ export default function ViosVirtualPlanetRoot() {
         </div>
         {/* --- FIN GRID DE MARCAS --- */}
 
-        {/* Letrero Neón de Carga (Opcional mantenerlo aquí, puedes quitarlo si ya no encaja con la temática de 'Marcas') */}
+        {/* Letrero Neón de Carga */}
         <div className="mt-20 flex items-center space-x-3">
           <div className="h-3 w-3 rounded-full bg-cyan-400 animate-ping"></div>
           <h2 className="text-xl md:text-2xl font-mono text-cyan-400 tracking-widest animate-pulse drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">

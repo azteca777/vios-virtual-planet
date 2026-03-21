@@ -4,9 +4,13 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const estadosVirtuales = [
-  { id: 'quintana-roo', name: 'QUINTANA ROO', image: '/mapa_quintana_roo.jpeg', disponible: true },
-  { id: 'jalisco', name: 'JALISCO', image: '/mapa_quintana_roo.jpeg', disponible: false },
+// Definimos la lista de marcas en México.
+// Cada una ya tiene preparado el espacio 'url' para cuando quieras agregar sus enlaces.
+const marcasMexico = [
+  { id: 'conquesito', name: 'Empanadas con Quesito', logo: '/logo_conquesito.jpeg', url: '#' },
+  { id: 'ketzzal', name: 'Salsas Ketzzal', logo: '/salsas_ketzzal.jpeg', url: '#' },
+  { id: 'mulata', name: 'Mulata', logo: '/mulata_bw.jpeg', url: '#' },
+  { id: 'magnolia', name: 'Magnolia', logo: '/magnolia.jpeg', url: '#' },
 ];
 
 export default function ViosVirtualPlanetRoot() {
@@ -84,73 +88,51 @@ export default function ViosVirtualPlanetRoot() {
             
       </section>
 
-      {/* 📊 SECCIÓN 2: EL PLANETA (Estados Virtuales Interactivos) */}
+      {/* 🏢 SECCIÓN 2: MARCAS EN MÉXICO (Reemplaza a Estados Virtuales) */}
       <section className="px-6 max-w-7xl mx-auto mb-32 flex flex-col items-center">
         <div className="w-full flex items-center justify-between mb-16">
           <h2 className={`font-montserrat text-3xl md:text-5xl font-black ${!introTerminada ? 'text-white' : 'text-black'} transition-colors duration-1000`}>
-            {idioma === 'es' ? 'Estados Virtuales' : 'Virtual States'}
+            {idioma === 'es' ? 'Marcas en México' : 'Brands in Mexico'}
           </h2>
           <div className={`h-px ${!introTerminada ? 'bg-gradient-to-r from-gray-800 to-transparent' : 'bg-gradient-to-r from-gray-300 to-transparent'} flex-grow ml-8 transition-colors duration-1000`}></div>
         </div>
 
-        {/* --- MAPA INTERACTIVO DE ESTADOS --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl">
-          {estadosVirtuales.map((estado) => (
-            <div key={estado.id} className="relative group">
-              {estado.disponible ? (
-                <Link 
-                  href={`/${estado.id}`} 
-                  className="w-full aspect-[1.1/1] relative p-2 bg-black/30 border border-neutral-800 rounded-3xl overflow-hidden cursor-pointer block 
-                              hover:border-[#d4af37] hover:shadow-[0_0_60px_-15px_rgba(212,175,55,0.4)] transition-all duration-300"
-                  aria-label={idioma === 'es' ? `Entrar al mapa virtual de ${estado.name}` : `Enter the virtual map of ${estado.name}`}
-                >
+        {/* --- GRID DE MARCAS --- */}
+        {/* Usamos un grid que se adapta: 2 columnas en móviles, 4 en pantallas grandes */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 w-full max-w-6xl">
+          {marcasMexico.map((marca) => (
+            <div key={marca.id} className="relative group">
+              <Link 
+                href={marca.url}
+                target={marca.url !== '#' ? "_blank" : undefined}
+                rel={marca.url !== '#' ? "noopener noreferrer" : undefined}
+                className="w-full aspect-square relative p-6 bg-white border border-gray-200 rounded-3xl overflow-hidden cursor-pointer flex items-center justify-center
+                            hover:border-[#d4af37] hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.3)] transition-all duration-300 transform group-hover:-translate-y-2"
+                aria-label={idioma === 'es' ? `Visitar perfil de ${marca.name}` : `Visit ${marca.name} profile`}
+              >
+                {/* Usamos 'object-contain' en lugar de 'cover' para que los logos completos quepan 
+                  sin recortarse, independientemente de sus proporciones originales.
+                */}
+                <div className="relative w-full h-full">
                   <Image 
-                    src={estado.image} 
-                    alt={`Mapa interactivo del estado de ${estado.name}, México.`} 
+                    src={marca.logo} 
+                    alt={`Logotipo de la marca ${marca.name}`} 
                     fill
-                    className="rounded-2xl object-cover w-full h-full z-0 group-hover:scale-105 transition-all duration-500"
-                    priority 
+                    className="object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-500"
+                    sizes="(max-width: 768px) 50vw, 25vw"
                   />
-
-                  <div className="absolute inset-0 w-full h-full rounded-2xl bg-cyan-400/0 border-4 border-cyan-400 opacity-0 group-hover:opacity-100 group-hover:bg-cyan-400/10 group-hover:shadow-[0_0_60px_20px_rgba(34,211,238,0.6)] group-hover:animate-pulse transition-all duration-300" />
-                  
-                  <div className="absolute bottom-6 left-6 right-6 bg-black/70 backdrop-blur-md p-4 rounded-xl border border-neutral-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 text-center">
-                    <h3 className="font-montserrat text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-200 via-yellow-500 to-yellow-700 uppercase tracking-tight">
-                      {estado.name}
-                    </h3>
-                    <p className="text-gray-300 text-xs font-mono tracking-wider mt-1">
-                      {idioma === 'es' ? 'Haga clic para Entrar' : 'Click to Enter'}
-                    </p>
-                  </div>
-                </Link>
-              ) : (
-                <div className="w-full aspect-[1.1/1] relative p-2 bg-neutral-900/50 border border-neutral-800 rounded-3xl overflow-hidden opacity-50">
-                  <Image 
-                    src={estado.image} 
-                    alt={`Mapa interactivo del estado de ${estado.name}, México. No disponible.`} 
-                    fill
-                    className="rounded-2xl object-cover w-full h-full z-0"
-                    priority 
-                  />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/60 backdrop-blur-sm p-6 rounded-2xl z-10 text-center">
-                    <h3 className="font-montserrat text-3xl font-black text-gray-400 uppercase tracking-tight">
-                      {estado.name}
-                    </h3>
-                    <p className="text-gray-200 text-sm font-bold mt-2">
-                      {idioma === 'es' ? 'Próximamente...' : 'Coming Soon...'}
-                    </p>
-                  </div>
                 </div>
-              )}
+              </Link>
             </div>
           ))}
         </div>
-        {/* --- FIN MAPA INTERACTIVO DE ESTADOS --- */}
+        {/* --- FIN GRID DE MARCAS --- */}
 
+        {/* Letrero Neón de Carga (Opcional mantenerlo aquí, puedes quitarlo si ya no encaja con la temática de 'Marcas') */}
         <div className="mt-20 flex items-center space-x-3">
           <div className="h-3 w-3 rounded-full bg-cyan-400 animate-ping"></div>
           <h2 className="text-xl md:text-2xl font-mono text-cyan-400 tracking-widest animate-pulse drop-shadow-[0_0_10px_rgba(34,211,238,0.8)]">
-            {idioma === 'es' ? 'NAVEGACIÓN DE PLANETA ACTIVA...' : 'PLANET NAVIGATION ACTIVE...'}
+            {idioma === 'es' ? 'CONECTANDO CON SOCIOS...' : 'CONNECTING WITH PARTNERS...'}
           </h2>
         </div>
       </section>

@@ -2,6 +2,7 @@
 
 import { useState, use } from 'react';
 import Image from 'next/image';
+import Link from 'next/link'; // 👈 Importamos Link para la navegación
 
 interface EstadoPageProps {
   params: Promise<{
@@ -40,7 +41,7 @@ export default function EstadoLandingPage({ params }: EstadoPageProps) {
   const nombreEstado = formatStateName(estado); 
   const esQuintanaRoo = estado.toLowerCase() === 'quintana-roo';
 
-  // NUEVA LÓGICA DE REDIRECCIÓN A VIRTUAL METRA
+  // LÓGICA DE REDIRECCIÓN A VIRTUAL METRA
   const handlePointSelect = (id: string, name: string, slug: string) => {
     setPointSelected(id);
     
@@ -52,8 +53,17 @@ export default function EstadoLandingPage({ params }: EstadoPageProps) {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-neutral-950 p-6 text-center">
-      <div className="flex flex-col items-center space-y-12 w-full max-w-7xl relative">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-neutral-950 p-6 text-center relative">
+      
+      {/* 👇 NUEVO BOTÓN DE REGRESO 👇 */}
+      <Link 
+        href="https://viosvirtualplanet.com"
+        className="absolute top-6 left-6 md:top-8 md:left-8 px-5 py-2.5 bg-black/40 text-white/90 rounded-full text-xs md:text-sm font-bold tracking-widest uppercase hover:bg-[#d4af37] hover:text-black hover:border-[#d4af37] transition-all duration-300 border border-white/20 backdrop-blur-md cursor-pointer z-50 flex items-center gap-2 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
+      >
+        <span className="text-lg leading-none">⬅</span> Explorar Marcas Asociadas
+      </Link>
+      
+      <div className="flex flex-col items-center space-y-12 w-full max-w-7xl relative mt-16 md:mt-0">
         
         <h1 className="text-3xl md:text-4xl font-extrabold uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-yellow-200 via-yellow-500 to-yellow-700 drop-shadow-[0_3px_3px_rgba(0,0,0,0.8)] px-4">
           QUINTANA ROO
@@ -80,7 +90,6 @@ export default function EstadoLandingPage({ params }: EstadoPageProps) {
                   type="button"
                   onMouseEnter={() => setPointHovered(point.id)}
                   onMouseLeave={() => setPointHovered(null)}
-                  // Pasamos el point.slug a la función
                   onClick={() => handlePointSelect(point.id, point.name, point.slug)}
                   className={`absolute flex items-center justify-center -translate-x-1/2 -translate-y-1/2 
                               border-transparent rounded-full

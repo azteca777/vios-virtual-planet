@@ -10,27 +10,54 @@ const marcasMexico = [
     id: 'conquesito', 
     name: 'Empanadas con Quesito', 
     logo: '/logo_conquesito.jpeg', 
-    // 👇 AQUÍ ESTÁ EL ENLACE PROFUNDO AL METAVERSO
-    url: 'https://tianguistulum.com/?local=conquesito' 
+    // 👇 NUEVO ENLACE PARA CONQUESITO 👇
+    url: 'https://conquesitooaxaca.com',
+    // 👇 Imagen de la dueña agregada 👇
+    dueña: '/cara_alex.png'
   },
   { 
     id: 'ketzzal', 
     name: 'Salsas Ketzzal', 
     logo: '/salsas_ketzzal.jpeg', 
-    url: '#' 
+    // 👇 NUEVO ENLACE PARA KETZZAL 👇
+    url: 'https://salsasquetzal.com/',
+    // 👇 Imagen de la dueña agregada 👇
+    dueña: '/cara_andy.png'
   },
   { 
     id: 'mulata', 
     name: 'Mulata', 
-    logo: '/mulata_bw.jpeg', 
-    url: '#' 
+    logo: '/mulata.jpeg', 
+    url: '#',
+    // 👇 Imagen de la dueña agregada 👇
+    dueña: '/cara_jessy.png'
   },
   { 
     id: 'magnolia', 
     name: 'Magnolia', 
     logo: '/magnolia.jpeg', 
-    url: '#' 
+    // 👇 NUEVO ENLACE PARA MAGNOLIA 👇
+    url: 'https://www.virtualuxurytulum.com/magnolia',
+    // 👇 Imagen de la dueña agregada 👇
+    dueña: '/cara_pau.png'
   },
+  // 👇 NUEVAS MARCAS AGREGADAS AQUÍ 👇
+  { 
+    id: 'templo_de_pieles', 
+    name: 'Templo de Pieles', 
+    logo: '/templo_de_pieles.jpeg', 
+    url: '#',
+    // 👇 Imagen de la dueña 👇
+    dueña: '/cara_lu.png' 
+  },
+  { 
+    id: 'bernardita', 
+    name: 'Bernardita', 
+    logo: '/bernardita.jpeg', 
+    url: '#',
+    // 👇 Imagen de la dueña 👇
+    dueña: '/cara_marca_berni.png' 
+  }
 ];
 
 export default function ViosVirtualPlanetRoot() {
@@ -125,11 +152,12 @@ export default function ViosVirtualPlanetRoot() {
                 href={marca.url}
                 target={marca.url !== '#' ? "_blank" : undefined}
                 rel={marca.url !== '#' ? "noopener noreferrer" : undefined}
-                className="w-full aspect-square relative p-6 bg-white border border-gray-200 rounded-3xl overflow-hidden cursor-pointer flex items-center justify-center
+                className="w-full aspect-square relative p-6 bg-white border border-gray-200 rounded-3xl overflow-visible cursor-pointer flex items-center justify-center
                             hover:border-[#d4af37] hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.3)] transition-all duration-300 transform group-hover:-translate-y-2"
                 aria-label={idioma === 'es' ? `Visitar perfil de ${marca.name}` : `Visit ${marca.name} profile`}
               >
-                <div className="relative w-full h-full">
+                {/* Contenedor del Logo (Oculta el desbordamiento SOLO para el logo) */}
+                <div className="relative w-full h-full overflow-hidden rounded-xl">
                   <Image 
                     src={marca.logo} 
                     alt={`Logotipo de la marca ${marca.name}`} 
@@ -139,6 +167,20 @@ export default function ViosVirtualPlanetRoot() {
                   />
                 </div>
               </Link>
+              
+              {marca.dueña && (
+                <div className="absolute -bottom-5 -right-5 md:-bottom-6 md:-right-6 w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white bg-white overflow-hidden shadow-xl z-10 transition-transform duration-300 group-hover:scale-110 p-1">
+                  <div className="relative w-full h-full rounded-full overflow-hidden">
+                    <Image 
+                      src={marca.dueña} 
+                      alt={`Dueña de ${marca.name}`} 
+                      fill
+                      className="object-cover" 
+                      sizes="96px"
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

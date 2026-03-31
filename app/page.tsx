@@ -53,7 +53,8 @@ const marcasMexico = [
     id: 'bernardita', 
     name: 'Bernardita', 
     logo: '/bernardita.jpeg', 
-    url: '#',
+    // 👇 NUEVO ENLACE PARA BERNARDITA 👇
+    url: 'https://www.virtualuxurytulum.com/bernardita',
     // 👇 Imagen de la dueña 👇
     dueña: '/cara_marca_berni.png' 
   },

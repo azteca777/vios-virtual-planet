@@ -41,7 +41,6 @@ const marcasMexico = [
     // 👇 Imagen de la dueña agregada 👇
     dueña: '/cara_pau.png'
   },
-  // 👇 NUEVAS MARCAS AGREGADAS AQUÍ 👇
   { 
     id: 'templo_de_pieles', 
     name: 'Templo de Pieles', 
@@ -57,6 +56,15 @@ const marcasMexico = [
     url: '#',
     // 👇 Imagen de la dueña 👇
     dueña: '/cara_marca_berni.png' 
+  },
+  // 👇 NUEVA MARCA OASIS AGREGADA AQUÍ 👇
+  { 
+    id: 'oasis', 
+    name: 'Oasis', 
+    logo: '/logo_oasis.jpeg', 
+    url: '#',
+    // 👇 Imagen de la dueña 👇
+    dueña: '/cara_ara1.png' 
   }
 ];
 

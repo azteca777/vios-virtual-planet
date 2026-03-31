@@ -58,14 +58,30 @@ const marcasMexico = [
     // 👇 Imagen de la dueña 👇
     dueña: '/cara_marca_berni.png' 
   },
-  // 👇 NUEVA MARCA OASIS AGREGADA AQUÍ 👇
   { 
     id: 'oasis', 
     name: 'Oasis', 
     logo: '/logo_oasis.jpeg', 
-    url: '#',
+    url: 'https://www.virtualuxurytulum.com/oasis',
     // 👇 Imagen de la dueña 👇
     dueña: '/cara_ara1.png' 
+  },
+  { 
+    id: 'lukas', 
+    name: 'Lukas', 
+    logo: '/logo_lukas.png', 
+    url: '#',
+    // 👇 Imagen de la dueña 👇
+    dueña: '/cara_lukas2.png' 
+  },
+  // 👇 NUEVA MARCA CHAZA AGREGADA AQUÍ 👇
+  { 
+    id: 'chaza', 
+    name: 'Chaza', 
+    logo: '/logo_chaza.png', 
+    url: '#',
+    // 👇 Imagen de la dueña 👇
+    dueña: '/cara_chaza1.png' 
   }
 ];
 

@@ -28,7 +28,7 @@ const marcasMexico = [
     id: 'mulata', 
     name: 'Mulata', 
     logo: '/mulata.jpeg', 
-    url: '#',
+    url: 'https://www.virtualuxurytulum.com/luxury/mulata',
     // 👇 Imagen de la dueña agregada 👇
     dueña: '/cara_jessy.png'
   },

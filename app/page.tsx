@@ -45,7 +45,7 @@ const marcasMexico = [
   { 
     id: 'templo_de_pieles', 
     name: 'Templo de Pieles', 
-    logo: '/templo_de_pieles.jpeg', 
+    logo: '/templo_de_pieles_verde.jpeg', 
     url: '#',
     // 👇 Imagen de la dueña 👇
     dueña: '/cara_lu.png' 

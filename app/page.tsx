@@ -70,7 +70,7 @@ const marcasMexico = [
     id: 'lukas', 
     name: 'Lukas', 
     logo: '/logo_lukas.png', 
-    url: '#',
+    url: 'https://www.virtualuxurytulum.com/lukas',
     // 👇 Imagen de la dueña 👇
     dueña: '/cara_lukas2.png' 
   },

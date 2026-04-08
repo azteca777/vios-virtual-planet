@@ -10,18 +10,14 @@ const marcasMexico = [
     id: 'conquesito', 
     name: 'Empanadas con Quesito', 
     logo: '/logo_conquesito.jpeg', 
-    // 👇 NUEVO ENLACE PARA CONQUESITO 👇
     url: 'https://conquesitooaxaca.com',
-    // 👇 Imagen de la dueña agregada 👇
     dueña: '/cara_alex.png'
   },
   { 
     id: 'ketzzal', 
     name: 'Salsas Ketzzal', 
     logo: '/salsas_ketzzal.jpeg', 
-    // 👇 NUEVO ENLACE PARA KETZZAL 👇
     url: 'https://salsasquetzal.com/',
-    // 👇 Imagen de la dueña agregada 👇
     dueña: '/cara_andy.png'
   },
   { 
@@ -29,16 +25,13 @@ const marcasMexico = [
     name: 'Mulata', 
     logo: '/mulata.jpeg', 
     url: 'https://www.virtualuxurytulum.com/mulata',
-    // 👇 Imagen de la dueña agregada 👇
     dueña: '/cara_jessy.png'
   },
   { 
     id: 'magnolia', 
     name: 'Magnolia', 
     logo: '/magnolia.jpeg', 
-    // 👇 NUEVO ENLACE PARA MAGNOLIA 👇
     url: 'https://www.virtualuxurytulum.com/magnolia',
-    // 👇 Imagen de la dueña agregada 👇
     dueña: '/cara_pau.png'
   },
   { 
@@ -46,16 +39,13 @@ const marcasMexico = [
     name: 'Templo de Pieles', 
     logo: '/templo_de_pieles_verde.jpeg', 
     url: '#',
-    // 👇 Imagen de la dueña 👇
     dueña: '/cara_lu.png' 
   },
   { 
     id: 'bernardita', 
     name: 'Bernardita', 
     logo: '/bernardita.jpeg', 
-    // 👇 NUEVO ENLACE PARA BERNARDITA 👇
     url: 'https://www.virtualuxurytulum.com/bernardita',
-    // 👇 Imagen de la dueña 👇
     dueña: '/cara_marca_berni.png' 
   },
   { 
@@ -63,7 +53,6 @@ const marcasMexico = [
     name: 'Oasis', 
     logo: '/logo_oasis.jpeg', 
     url: 'https://www.virtualuxurytulum.com/oasis',
-    // 👇 Imagen de la dueña 👇
     dueña: '/cara_ara1.png' 
   },
   { 
@@ -71,17 +60,22 @@ const marcasMexico = [
     name: 'Lukas', 
     logo: '/logo_lukas.png', 
     url: 'https://www.virtualuxurytulum.com/lukas',
-    // 👇 Imagen de la dueña 👇
     dueña: '/cara_lukas2.png' 
   },
-  // 👇 NUEVA MARCA CHAZA AGREGADA AQUÍ 👇
   { 
     id: 'chaza', 
     name: 'Chaza', 
     logo: '/logo_chaza.png', 
     url: '#',
-    // 👇 Imagen de la dueña 👇
     dueña: '/cara_chaza1.png' 
+  },
+  // 👇 NUEVA MARCA LOYALTINK AGREGADA AQUÍ 👇
+  { 
+    id: 'loyaltink', 
+    name: 'Loyaltink Brigade', 
+    logo: '/loyaltink/logo_loyaltink.jpeg', 
+    url: '/loyaltink',
+    dueña: '/loyaltink/cara_mau.png' 
   }
 ];
 
@@ -175,8 +169,8 @@ export default function ViosVirtualPlanetRoot() {
             <div key={marca.id} className="relative group">
               <Link 
                 href={marca.url}
-                target={marca.url !== '#' ? "_blank" : undefined}
-                rel={marca.url !== '#' ? "noopener noreferrer" : undefined}
+                target={marca.url !== '#' && marca.url !== '/loyaltink' ? "_blank" : undefined}
+                rel={marca.url !== '#' && marca.url !== '/loyaltink' ? "noopener noreferrer" : undefined}
                 className="w-full aspect-square relative p-6 bg-white border border-gray-200 rounded-3xl overflow-visible cursor-pointer flex items-center justify-center
                             hover:border-[#d4af37] hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.3)] transition-all duration-300 transform group-hover:-translate-y-2"
                 aria-label={idioma === 'es' ? `Visitar perfil de ${marca.name}` : `Visit ${marca.name} profile`}
@@ -198,7 +192,7 @@ export default function ViosVirtualPlanetRoot() {
                   <div className="relative w-full h-full rounded-full overflow-hidden">
                     <Image 
                       src={marca.dueña} 
-                      alt={`Dueña de ${marca.name}`} 
+                      alt={`Representante de ${marca.name}`} 
                       fill
                       className="object-cover" 
                       sizes="96px"

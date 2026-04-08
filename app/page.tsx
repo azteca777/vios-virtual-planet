@@ -73,9 +73,9 @@ const marcasMexico = [
   { 
     id: 'loyaltink', 
     name: 'Loyaltink Brigade', 
-    logo: '/loyaltink/logo_loyaltink.jpeg', 
+    logo: '/logo_loyaltink.jpeg', 
     url: '/loyaltink',
-    dueña: '/loyaltink/cara_mau.png' 
+    dueña: '/cara_mau.png' 
   }
 ];
 

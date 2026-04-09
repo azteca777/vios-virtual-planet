@@ -74,7 +74,7 @@ const marcasMexico = [
     id: 'loyaltink', 
     name: 'Loyaltink Brigade', 
     logo: '/logo_loyaltink.jpeg', 
-    url: '/loyaltink',
+    url: 'https://www.virtualuxurytulum.com/loyaltink',
     dueña: '/cara_mau3.png' 
   }
 ];

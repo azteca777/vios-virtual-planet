@@ -69,13 +69,20 @@ const marcasMexico = [
     url: '#',
     dueña: '/cara_chaza1.png' 
   },
-  // 👇 NUEVA MARCA LOYALTINK AGREGADA AQUÍ 👇
   { 
     id: 'loyaltink', 
     name: 'Loyaltink Brigade', 
     logo: '/logo_loyaltink.jpeg', 
     url: 'https://www.virtualuxurytulum.com/loyaltink',
     dueña: '/cara_mau3.png' 
+  },
+  // 👇 NUEVA MARCA TODO IMPORTADO EM AGREGADA AQUÍ 👇
+  { 
+    id: 'todoimportado', 
+    name: 'Todo Importado EM', 
+    logo: '/logo_todo_importado.png', 
+    url: 'https://www.virtualuxurytulum.com/todoimportado',
+    dueña: '/cara_steff.png' 
   }
 ];
 
@@ -169,8 +176,8 @@ export default function ViosVirtualPlanetRoot() {
             <div key={marca.id} className="relative group">
               <Link 
                 href={marca.url}
-                target={marca.url !== '#' && marca.url !== '/loyaltink' ? "_blank" : undefined}
-                rel={marca.url !== '#' && marca.url !== '/loyaltink' ? "noopener noreferrer" : undefined}
+                target={marca.url !== '#' && marca.url !== '/loyaltink' && marca.url !== '/todoimportado' ? "_blank" : undefined}
+                rel={marca.url !== '#' && marca.url !== '/loyaltink' && marca.url !== '/todoimportado' ? "noopener noreferrer" : undefined}
                 className="w-full aspect-square relative p-6 bg-white border border-gray-200 rounded-3xl overflow-visible cursor-pointer flex items-center justify-center
                             hover:border-[#d4af37] hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.3)] transition-all duration-300 transform group-hover:-translate-y-2"
                 aria-label={idioma === 'es' ? `Visitar perfil de ${marca.name}` : `Visit ${marca.name} profile`}
